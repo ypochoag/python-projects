@@ -11,3 +11,4 @@ class TodoSerializer(serializers.ModelSerializer):
             'estado',
         )
         model = models.Todo
+    

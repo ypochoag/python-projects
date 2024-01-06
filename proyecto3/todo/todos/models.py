@@ -7,8 +7,8 @@ class Todo(models.Model):
         ('completada', 'Completada'),
     )
 
-    titulo = models.CharField(max_length=200)
-    descripcion = models.TextField()
+    titulo = models.CharField(max_length=200, blank=False, null=False)
+    descripcion = models.TextField(blank=False, null=False)
     estado = models.CharField(max_length=20, choices=ESTADOS, default='pendiente')
 
     def __str__(self):
