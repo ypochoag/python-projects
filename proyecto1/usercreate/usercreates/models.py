@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Usuario(models.Model):
 
     TIPO_CHOICES = [
@@ -20,7 +21,16 @@ class Usuario(models.Model):
     cargo = models.CharField(max_length=50, choices=CARGO_CHOICES, blank=True, null=True)
     longitud = models.FloatField(default=0, blank=True, null=True)
     latitud = models.FloatField(default=0, blank=True, null=True)
-    estado_geo = models.CharField(max_length=100, blank=True, null=True)
+    estado_geo = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
+
+
+class Geo_Pos(models.Model):
+    address = models.CharField(max_length=500)
+    longitud = models.FloatField(default=0, blank=True, null=True)
+    latitud = models.FloatField(default=0, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.longitud} {self.latitud}"

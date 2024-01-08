@@ -1,4 +1,5 @@
-from .models import Usuario
+from .models import Usuario, Geo_Pos
+from django.conf import settings
 import requests
 
 class UsuarioRepository:
@@ -39,26 +40,40 @@ class UsuarioRepository:
     def geocodificar_compradores():
 
         usuarios_compradores_sin_geocodificar = Usuario.objects.filter(
-            tipo='comprador', longitud=0, latitud=0
+            tipo='comprador', estado_geo=False
         )
         
         for usuario in usuarios_compradores_sin_geocodificar:
-            address = f"{usuario.direccion}, {usuario.ciudad}"
-            
-            params = {
-                'address': address,
-                'key': 'AIzaSyD0txU5n7xlPZ3zkEsEjW09yVHmmEVjU4o'
-            }
-            
-            response = requests.get('https://maps.googleapis.com/maps/api/geocode/json', params=params)
-            data = response.json()
+            new_address = f"{usuario.direccion}, {usuario.ciudad}"
 
-            if data['status'] == 'OK':
-                location = data['results'][0]['geometry']['location']
-                usuario.longitud = location['lng']
-                usuario.latitud = location['lat']
+            try:
+                geo_pos = Geo_Pos.objects.get(address=new_address)
+                usuario.longitud = geo_pos.longitud
+                usuario.latitud = geo_pos.latitud
+                usuario.estado_geo = True
                 usuario.save()
-            else:
-                usuario.longitud = 0
-                usuario.latitud = 0
-                usuario.save()
+            except Geo_Pos.DoesNotExist:          
+                params = {
+                    'address': new_address,
+                    'key': settings.GOOGLE_API_KEY
+                }
+                response = requests.get('https://maps.googleapis.com/maps/api/geocode/json', params=params)
+                data = response.json()
+                
+                if data['status'] == 'OK':
+                    location = data['results'][0]['geometry']['location']
+                    usuario.longitud = location['lng']
+                    usuario.latitud = location['lat']
+                    usuario.estado_geo = True
+                    usuario.save()
+
+                    geo_pos = Geo_Pos(
+                        address=new_address,
+                        longitud=location['lng'],
+                        latitud=location['lat'],
+                    )
+                    geo_pos.save()
+                else:
+                    usuario.longitud = 0
+                    usuario.latitud = 0
+                    usuario.save()
