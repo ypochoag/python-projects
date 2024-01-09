@@ -26,15 +26,15 @@ Tecnologías Utilizadas
 
 ### Endpoints
 
-`POST` :  Crear una nueva tarea. 
+`POST` /api/v1 : Crear una nueva tarea. 
 
-`GET` : /api/v1: Obtener la lista de todas las tareas. 
+`GET` /api/v1 : Obtener la lista de todas las tareas. 
 
-`GET` : /api/v1/{id_tarea}:Obtener detalles de una tarea específica. 
+`GET` /api/v1/{id_tarea}: Obtener detalles de una tarea específica. 
 
-`PUT` : Actualizar el estado de una tarea (pendiente, en progreso, completada).  
+`PUT` /api/v1/{id_tarea} : Actualizar el estado de una tarea (pendiente, en progreso, completada).  
 
- `DELETE` : /api/v1/{id_tarea}: Eliminar una tarea.  
+`DELETE` : /api/v1/{id_tarea}: Eliminar una tarea.  
 
 ### Documentación
 
@@ -51,16 +51,20 @@ A continuación, se detallan los pasos necesarios para descargar y ejecutar el p
 Para comenzar, clona el repositorio en tu máquina local utilizando el siguiente comando en tu terminal:
 
 ```bash
-git clone https://github.com/tu-usuario/nombre-del-repositorio.git
+git clone https://github.com/ypochoag/python-projects.git
 ```
 - Acceder al Directorio del Proyecto
 Navega al directorio del proyecto utilizando el siguiente comando
 
 ```bash
-cd nombre-del-repositorio
+cd .\python-projects\proyecto3\todo\ 
 ```
-- Instalar Dependencias
-Una vez en el directorio del proyecto, instala las dependencias necesarias. Necesitas las herramientas pip y Python instaladas en tu computador.
+- Instalar Dependencias y ejecutar entorno de trabajo
+Una vez en el directorio del proyecto, instala las dependencias necesarias. Necesitas las herramientas pip y pipenv, ademas de una version de Python 3.10+ instaladas en tu computador. Luego ejecutar el siguiente comando:
+
+```bash
+pipenv shell 
+```
 
 - Ejecutar el Proyecto
 Finalmente, ejecuta el proyecto utilizando el siguiente comando:
@@ -68,10 +72,12 @@ Finalmente, ejecuta el proyecto utilizando el siguiente comando:
 ```bash
 python manage.py runserver
 ```
-Esto iniciará el servidor de desarrollo. Una vez iniciado, puedes acceder al proyecto a través de tu navegador web utilizando la URL local proporcionada, por ejemplo: http://localhost:8000/.
+
+Esto iniciará el servidor de desarrollo. Una vez iniciado, puedes acceder al proyecto a través de tu navegador web utilizando la URL local proporcionada, por ejemplo: http://localhost:8000/admin.
 
 - Superusuario
-La aplicacion fue configurada con los siguientes datos de superusuario
+La aplicacion fue configurada con los siguientes datos de superusuario:
+
 ```javaScript
 {
     "username": "admin",
