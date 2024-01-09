@@ -25,6 +25,6 @@ Tecnologías Utilizadas
 **Entrega del Proyecto**
 Para la entrega del proyecto, se proporcionará un archivo Jupyter Notebook, detallando las librerías utilizadas y cada etapa del proyecto.
 
-Para poder abrir el proyecto es necesario tener instalado VisualStudioCode y las extensiones python, Jupiter de Microsoft o en su defecto Anaconda con Jupiter. También, puedes encontrar el reporte en pdf en esta misma carpeta con el nombre "proyecto2.pdf".
+Para poder abrir el proyecto es necesario tener instalado VisualStudioCode y las extensiones python, Jupiter de Microsoft o en su defecto Anaconda con Jupiter. También, puedes encontrar el reporte en pdf en esta misma carpeta con el nombre [proyecto2.pdf]().
 
 
