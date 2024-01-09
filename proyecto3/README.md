@@ -26,11 +26,15 @@ Tecnologías Utilizadas
 
 ### Endpoints
 
-- POST  Crear una nueva tarea.
-- GET /api/v1: Obtener la lista de todas las tareas.
-- GET /api/v1/{id_tarea}:Obtener detalles de una tarea específica.
-- Actualizar el estado de una tarea (pendiente, en progreso, completada).
-- DELETE /api/v1/{id_tarea}: Eliminar una tarea.
+`POST` :  Crear una nueva tarea. 
+
+`GET` : /api/v1: Obtener la lista de todas las tareas. 
+
+`GET` : /api/v1/{id_tarea}:Obtener detalles de una tarea específica. 
+
+`PUT` : Actualizar el estado de una tarea (pendiente, en progreso, completada).  
+
+ `DELETE` : /api/v1/{id_tarea}: Eliminar una tarea.  
 
 ### Documentación
 
