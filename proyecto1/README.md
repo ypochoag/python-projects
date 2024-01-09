@@ -53,14 +53,18 @@ git clone https://github.com/tu-usuario/nombre-del-repositorio.git
 Navega al directorio del proyecto utilizando el siguiente comando
 
 ```bash
-cd nombre-del-repositorio
+cd .\python-projects\proyecto1\usercreate\ 
 ```
-
-- Instalar Dependencias
-Una vez en el directorio del proyecto, instala las dependencias necesarias. Necesitas las herramientas pip y Python instaladas en tu computador.
 
 - API KEY
 Asegúrate de configurar adecuadamente las variables de entorno en un archivo `.env`. Se proporciona un Ejemplo de un archivo en `.env.example`.
+
+- Instalar Dependencias y ejecutar entorno de trabajo
+Una vez en el directorio del proyecto, instala las dependencias necesarias. Necesitas las herramientas pip y pipenv, ademas de una version de Python 3.10+ instaladas en tu computador. Luego ejecutar el siguiente comando:
+
+```bash
+pipenv shell 
+```
 
 - Ejecutar el Proyecto
 Finalmente, ejecuta el proyecto utilizando el siguiente comando:
