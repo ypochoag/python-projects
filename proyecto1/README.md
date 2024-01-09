@@ -47,7 +47,7 @@ A continuación, se detallan los pasos necesarios para descargar y ejecutar el p
 Para comenzar, clona el repositorio en tu máquina local utilizando el siguiente comando en tu terminal:
 
 ```bash
-git clone https://github.com/tu-usuario/nombre-del-repositorio.git
+git clone https://github.com/ypochoag/python-projects.git
 ```
 - Acceder al Directorio del Proyecto
 Navega al directorio del proyecto utilizando el siguiente comando
