@@ -22,9 +22,7 @@ Tecnologías Utilizadas
    Total de víctimas por género.
    Total de víctimas por estado.
 
-**Entrega del Proyecto**
-Para la entrega del proyecto, se proporcionará un archivo Jupyter Notebook, detallando las librerías utilizadas y cada etapa del proyecto.
+**Reporte del Proyecto**
+El medio seleccionado para reportar los resultados del proyecto, es un archivo Jupyter Notebook, en el cual se detallan las librerías utilizadas y procedimientos en cada etapa del proyecto.
 
-Para poder abrir el proyecto es necesario tener instalado VisualStudioCode y las extensiones python, Jupiter de Microsoft o en su defecto Anaconda con Jupiter. También, puedes encontrar el reporte en pdf en esta misma carpeta con el nombre [proyecto2.pdf]().
-
-
+Para poder abrir el proyecto es necesario tener instalado Visual Studio Code y las extensiones python, Jupiter de Microsoft o en su defecto Anaconda con Jupiter. También, puedes encontrar el reporte en pdf en esta misma carpeta con el nombre [proyecto2.pdf](https://github.com/ypochoag/python-projects/edit/main/proyecto2/proyecto2.pdf).
