@@ -1,38 +1,39 @@
 # P3: Gestor de tareas con CRUD 
 
-Este es un sistema sencillo de creación de usuarios que permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en la base de datos. Además, se implementa un proceso de autenticación utilizando un token fijo para un servicio de autenticación según el estándar OAUTH 2.0.
+En este proyecto, se desarrolló un Sistema de Gestión de Tareas utilizando Python y Django Rest Framework,  que permite realizar operaciones básicas en tareas. A continuación, se detallan los requisitos, tecnologías utilizadas y pasos para implementar y utilizar este sistema.
 
-### Características
-- La creación de usuarios se realiza por medio de la funcionalidad /admin/ del Framework Django, por lo tanto para hacer gestion de los mismos (creación, edición, activación, desactivación y eliminación) se hace a travez de la siguiente url: (es necesario primero ejecutar el proyecto)
-   `/admin/` : <http://localhost:8000/admin/>
-```javaScript
-    "username": "admin",
-    "password": "admin12345"
-```
-  
-- Base de Datos: Se crea una tabla llamada usuarios con campos como id, nombre, apellido, dirección, ciudad, tipo, longitud, latitud, estado_geo, y cargo.
-- Autenticación: Se implementa un token fijo para autenticar al usuario y proporcionar un token de sesión para acceder a los endpoints.
+### Descripción del Proyecto ###
 
-### Endpoints:
-
-- POST /crear: Permite crear usuarios diferenciando entre compradores y vendedores. La dirección es obligatoria para compradores, mientras que los vendedores tienen opciones de cargo.
-- GET /lista: Retorna el listado de todos los usuarios con sus atributos.
-- GET /usuario: Retorna un usuario específico por ID.
-- DELETE /eliminar: Elimina un usuario específico por ID.
-- GET /geocodificar_base: Actualiza la georreferenciación de compradores utilizando el servicio de geocoder de Google.
+El Sistema de Gestión de Tareas permite a los usuarios realizar las siguientes operaciones en las tareas:
+- Crear una nueva tarea.
+- Obtener la lista de todas las tareas.
+- Obtener detalles de una tarea específica.
+- Actualizar el estado de una tarea (pendiente, en progreso, completada).
+- Eliminar una tarea.
 
 ### Implementación
 Tecnologías Utilizadas
+- Python
 - Django: Framework web para Python.
-- OAuth 2.0: Para la autenticación [rest_framework_simplejwt].
-- Google Geocoding API: Para georreferenciación.
+  
+### Características
 
-### Nota:
-- Se utilizó un **patrón de repositorio** para separar la lógica de acceso a datos, debido a la necesidad de creación de diferentes tipos de usuarios.
-- Se diseñaron serializadores con restricciones adecuadas para garantizar el ingreso de los datos solicitados según especificaciones.
-- Se optimizó el uso de la API geo codificación de Google, mediante la implementación de una tabla en base de datos la cual guardaba la longitud y latitud de acuerdo con la dirección ingresada, dicha información era usada antes de solicitar la información a la API de tal modo que si ya se había realizado una consulta anterior, se usaba los datos previos. 
+- Operaciones Básicas (CRUD): Se implementan las operaciones CRUD para gestionar las tareas a través de la Django Rest Framework.
+- Validaciones: Se implementan validaciones para garantizar que los campos obligatorios (título, descripción) estén presentes y que el estado sea uno de los valores permitidos (pendiente, en progreso, completada).
+- Documentación: Se proporciona documentación sobre cómo utilizar la API mediante DRF YASG para generar documentación interactiva de la API.
+- Pruebas Unitarias: Se escriben pruebas unitarias de todas las funcionalidades del Sistema de Gestión de Tareas.
+- Base de Datos: Se crea una tabla llamada todos con campos como id, titulo, descripcion y estado.
+
+### Endpoints
+
+- POST  Crear una nueva tarea.
+- GET /api/v1: Obtener la lista de todas las tareas.
+- GET /api/v1/{id_tarea}:Obtener detalles de una tarea específica.
+- Actualizar el estado de una tarea (pendiente, en progreso, completada).
+- DELETE /api/v1/{id_tarea}: Eliminar una tarea.
 
 ### Documentación
+
 Para la documentación de la solución se implementó la herramienta [drf-yasg](https://drf-yasg.readthedocs.io/en/stable/) por lo tanto, una vez se encuentre en ejecución del proyecto, puedes acceder a la documentación de la API en los siguientes enlaces:
 
 - [Documentación Swagger (Swagger UI)](http://localhost:8000/docs/)
@@ -43,7 +44,6 @@ Para la documentación de la solución se implementó la herramienta [drf-yasg](
 A continuación, se detallan los pasos necesarios para descargar y ejecutar el proyecto en máquina local.
 
 - Clonar el Repositorio
-
 Para comenzar, clona el repositorio en tu máquina local utilizando el siguiente comando en tu terminal:
 
 ```bash
@@ -55,12 +55,8 @@ Navega al directorio del proyecto utilizando el siguiente comando
 ```bash
 cd nombre-del-repositorio
 ```
-
 - Instalar Dependencias
 Una vez en el directorio del proyecto, instala las dependencias necesarias. Necesitas las herramientas pip y Python instaladas en tu computador.
-
-- API KEY
-Asegúrate de configurar adecuadamente las variables de entorno en un archivo `.env`. Se proporciona un Ejemplo de un archivo en `.env.example`.
 
 - Ejecutar el Proyecto
 Finalmente, ejecuta el proyecto utilizando el siguiente comando:
@@ -78,22 +74,4 @@ La aplicacion fue configurada con los siguientes datos de superusuario
     "password": "admin12345"
 }
 ```
-- Generación de tokens
-La aplicación fue configurada para tener dos tokens de sesión, uno esta configurado para tener disponibilidad por 10 minutos  "access" el cual nos sirve para usar los endpoints protegidos y el otro tiene disponibilidad de uso de un dia "refresh", el cual, se usa para obtener una nueva actualización del token access, para hacer uso de estos se dispone de los siguientes endpoints:
 
- `POST` : <http://localhost:8000/api/token/>
-
- ```javaScript
-body = {
-    "username": "admin",
-    "password": "admin12345"
-}
-```
- 
- `POST` : <http://localhost:8000/api/token/refresh/>
- ```javaScript
-body = {
-    "refresh": TOKEN_REFRESH
-}
-```
-Para ejecutar las funcionalidades de la aplicación puedes usar Postman y recuerda configurar la autorización de tipo Bearer Token e ingresar el "access" token valido.
